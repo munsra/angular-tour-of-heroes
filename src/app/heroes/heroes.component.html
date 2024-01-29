@@ -1,18 +1,5 @@
 <h2>My Heroes</h2>
 <!--<div *ngIf="selectedHero">-->
-@if (selectedHero) {
-<div>
-    <h2>{{selectedHero.name | uppercase}} Details</h2>
-    <div>id: {{selectedHero.id}}</div>
-    <div>
-        <label for="hero-name">Hero name: </label>
-        <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
-    </div>
-</div>
-} @else {
-<span>No Hero Selected</span>
-}
-
 <ul class="heroes">
     <!--<li *ngFor="let hero of heroes"></li>-->
     @for (hero of heroes; track hero.id) {
@@ -26,5 +13,10 @@
     } @empty {
     <span>No heroes</span>
     }
-
 </ul>
+
+@if (selectedHero) {
+    <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+} @else {
+<span>No Hero Selected</span>
+}
