@@ -4,11 +4,9 @@
     <!--<li *ngFor="let hero of heroes"></li>-->
     @for (hero of heroes; track hero.id) {
     <li>
-        <!-- Select the hero and keep the item selected using selectedHero. -->
-        <button type="button" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
-            <span class="badge">{{hero.id}}</span>
-            <span class="name">{{hero.name}}</span>
-        </button>
+        <a routerLink="/detail/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </a>
     </li>
     } @empty {
     <span>No heroes</span>
@@ -16,7 +14,7 @@
 </ul>
 
 @if (selectedHero) {
-    <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
 } @else {
 <span>No Hero Selected</span>
 }
